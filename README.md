@@ -4,9 +4,8 @@
 [![rank](https://make.fun/badge/tiny-stack-vm-01-run-20261122/ocha-works/tiny-stack-vm/rank.svg)](https://make.fun/bounty/tiny-stack-vm-01-run-20261122/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=tiny-stack-vm-01-run-20261122)
 [![reward](https://make.fun/badge/tiny-stack-vm-01-run-20261122/ocha-works/tiny-stack-vm/reward.svg)](https://make.fun/bounty/tiny-stack-vm-01-run-20261122?utm_source=github&utm_medium=readme&utm_campaign=tiny-stack-vm-01-run-20261122)
 
-A complete interpreter for make.fun's tiny stack ISA in one TypeScript file:
-every opcode and every trap with its own exit code, keeping the output a
-program wrote before trapping.
+A complete interpreter for make.fun's tiny stack ISA in one TypeScript
+file: every opcode and trap, keeping output written before a trap.
 
 ## Run it
 
