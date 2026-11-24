@@ -13,8 +13,7 @@ file: every opcode and trap, keeping output written before a trap.
 node main.ts
 ```
 
-Answers every instance under `/input` into `/output` (override with
-`MAKEFUN_INPUT_DIR` / `MAKEFUN_OUTPUT_DIR`).
+Answers every instance under `/input` into `/output`.
 
 ---
 

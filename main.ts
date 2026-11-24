@@ -1,15 +1,11 @@
-// tiny-stack-vm: a complete interpreter for make.fun's tiny stack ISA (v1).
-// For each instance <id> it runs <id>/program.bin on <id>/input.bin and writes
-// <id>/stdout.bin (the bytes written) and <id>/exit.txt (the exit code). Values
-// wrap at 32 bits; limits are 256 stack values, 64 return addresses, 256 memory
-// words, 1,000,000 steps and 65,536 output bytes. A trap's code is the exit
-// code, and output written before a trap is kept.
+// tiny-stack-vm: interpreter for make.fun's tiny stack ISA (v1).
+// Runs <id>/program.bin on <id>/input.bin, writes <id>/stdout.bin and
+// <id>/exit.txt. 32-bit wrap; 256 stack, 64 calls, 256 mem words,
+// 1,000,000 steps, 65,536 output bytes; a trap keeps prior output.
 import { mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-// Per-opcode metadata as digit strings indexed by opcode byte, from 0x00 up
-// in segments of 16: how many values an opcode pops (POPS) and pushes
-// (PUSHES). Digits at unnamed bytes are unused: those bytes trap first.
+// Pops/pushes per opcode byte as digit strings (unused bytes trap first).
 const POPS =
   '0001122300000000' + '2222222122212220' + '2220000000000000' +
   '0110000000000000' + '1200000000000000' + '1101';
