@@ -29,7 +29,7 @@ function run(p: Uint8Array, inp: Uint8Array): { out: Uint8Array; code: number } 
     if (steps === 1000000) return done(10);
     if (pc < 0 || pc >= p.length) return done(9);
     const op = p[pc];
-    const known = op <= 0x07 || (op >= 0x10 && op <= 0x22) || (op >= 0x30 && op <= 0x34) ||
+    const known = op <= 0x07 || (op >= 0x10 && op <= 0x1e) || (op >= 0x20 && op <= 0x22) || (op >= 0x30 && op <= 0x34) ||
       op === 0x40 || op === 0x41 || (op >= 0x50 && op <= 0x53);
     if (!known) return done(5);
     const imm = op === 0x01 ? 1 : op === 0x02 ? 4 : op >= 0x30 && op <= 0x33 ? 2 : 0;
@@ -43,7 +43,7 @@ function run(p: Uint8Array, inp: Uint8Array): { out: Uint8Array; code: number } 
     pc = next;
 
     // Binary operators: pop b (top), then a, push a result.
-    if (op >= 0x10 && op <= 0x22 && op !== 0x17 && op !== 0x1b) {
+    if ((op >= 0x10 && op <= 0x1e && op !== 0x17 && op !== 0x1b) || (op >= 0x20 && op <= 0x22)) {
       const b = st[sp - 1];
       const a = st[sp - 2];
       let r: number;
